@@ -7,7 +7,7 @@ SEARCH="date.timezone"
 APPEND="date.timezone = \"Europe/Rome\""
 FILE="/etc/psa-webmail/horde/horde/php.ini"
 
-if  grep -q -F "$SEARCH" "$FILE"; then
+if ! grep -q -F "$SEARCH" "$FILE"; then
   sed -i '/date.timezone/d' $FILE
   echo $APPEND >> $FILE
 fi
